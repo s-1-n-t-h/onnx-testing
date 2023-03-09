@@ -1,14 +1,18 @@
-from transformers import pipeline
+from transformers import AutoTokenizer, pipeline
+from optimum.onnxruntime import ORTModelForSeq2SeqLM
 import torch
 
 # Init is ran on server startup
 # Load your model to GPU as a global variable here using the variable name "model"
 def init():
-    global model
+    global model, tokenizer
     
     device = 0 if torch.cuda.is_available() else -1
-    model = pipeline('summarization', model="facebook/bart-large-cnn", framework='pt',
-                     device=device, use_auth_token='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')
+    model_name = 's-1-n-t-h/bart-cnn-optimised'
+    model = ORTModelForSeq2SeqLM.from_pretrained(model_name,from_transformers=True,use_auth_token='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')
+    tokenizer = AutoTokenizer.from_pretrained(model_name,use_auth_token='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')
+    model = pipeline('summarization', model=model,
+                     device=device, use_auth_token='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',tokenizer=tokenizer)
 
 # Inference is ran for every server call
 # Reference your preloaded global model variable here.
