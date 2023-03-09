@@ -19,3 +19,4 @@ matplotlib
 evaluate
 regex
 protobuf==3.9.2
+optimum[onnxruntime]
