@@ -9,11 +9,9 @@ from optimum.onnxruntime import ORTModelForSeq2SeqLM
 def download_model():
     # do a dry run of loading the huggingface model, which will download weights
    
-    #model = ORTModelForSeq2SeqLM.from_pretrained(model_name,from_transformers=True,use_auth_token='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')
-    #tokenizer = AutoTokenizer.from_pretrained(model_name,use_auth_token='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')
-    model = ORTModelForSeq2SeqLM.from_pretrained("facebook/bart-large-cnn", from_transformers=True)
-    tokenizer = AutoTokenizer.from_pretrained("facebook/bart-large-cnn")
-    pipeline("summarization", model=model, tokenizer=tokenizer,accelarator='ort')
+    model = ORTModelForSeq2SeqLM.from_pretrained('braindao/flan-t5-cnn',from_transformers=True)
+    tokenizer = AutoTokenizer.from_pretrained('braindao/flan-t5-cnn')
+    pipeline("summarization", model=model, tokenizer=tokenizer)
 
 if __name__ == "__main__":
     download_model()
