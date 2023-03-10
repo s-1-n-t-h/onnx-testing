@@ -9,8 +9,8 @@ def init():
     
     device = 0 if torch.cuda.is_available() else -1
     model_name = 's-1-n-t-h/bart-cnn-optimised'
-    model = ORTModelForSeq2SeqLM.from_pretrained(model_name,from_transformers=True,use_auth_token='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')
-    tokenizer = AutoTokenizer.from_pretrained(model_name,use_auth_token='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')
+    model = ORTModelForSeq2SeqLM.from_pretrained(model_name,from_transformers=True)
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
     model = pipeline('summarization', model=model,
                      device=device, use_auth_token='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',tokenizer=tokenizer)
 
