@@ -19,5 +19,5 @@ matplotlib
 evaluate
 regex
 protobuf
-optimum[onnxruntime]
-onnxruntime-gpu
+optimum[onnxruntime-gpu]
+
