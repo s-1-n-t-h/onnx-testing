@@ -1,4 +1,5 @@
-from transformers import AutoTokenizer, pipeline
+from transformers import AutoTokenizer
+from optimum.pipelines import pipeline
 from optimum.onnxruntime import ORTModelForSeq2SeqLM
 import torch
 
