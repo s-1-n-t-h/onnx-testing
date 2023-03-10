@@ -18,5 +18,5 @@ numpy
 matplotlib
 evaluate
 regex
-protobuf==3.9.2
+protobuf
 optimum[onnxruntime]
