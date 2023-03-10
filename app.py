@@ -8,11 +8,9 @@ def init():
     global model, tokenizer
     
     device = 0 if torch.cuda.is_available() else -1
-    model_name = 'facebook/bart-large-cnn'
-    model = ORTModelForSeq2SeqLM.from_pretrained(model_name,from_transformers=True)
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
-    model = pipeline("summarization", model=model, tokenizer=tokenizer)
-    #pipeline('summarization', model=model_name,device=device, use_auth_token='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',accelerator='ort')
+    onnx_model = ORTModelForSeq2SeqLM.from_pretrained('braindao/flan-t5-cnn',from_transformers=True)
+    tokenizer = AutoTokenizer.from_pretrained('braindao/flan-t5-cnn')
+    model = pipeline("summarization", onnx_model=model, tokenizer=tokenizer)
 
 # Inference is ran for every server call
 # Reference your preloaded global model variable here.
