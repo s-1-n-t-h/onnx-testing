@@ -20,3 +20,4 @@ evaluate
 regex
 protobuf
 optimum[onnxruntime]
+onnxruntime-gpu
