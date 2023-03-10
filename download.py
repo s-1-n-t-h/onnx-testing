@@ -12,8 +12,7 @@ def download_model():
     model_name = 's-1-n-t-h/bart-cnn-optimised'
     #model = ORTModelForSeq2SeqLM.from_pretrained(model_name,from_transformers=True,use_auth_token='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')
     #tokenizer = AutoTokenizer.from_pretrained(model_name,use_auth_token='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')
-    pipeline('summarization', model=model_name,
-                      use_auth_token='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',accelerator='ort'
+    pipeline('summarization', model=model_name,use_auth_token='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',accelerator='ort')
 
 if __name__ == "__main__":
     download_model()
