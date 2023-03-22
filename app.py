@@ -10,7 +10,7 @@ def init():
     device = 0 if torch.cuda.is_available() else -1
     onnx_model = ORTModelForSeq2SeqLM.from_pretrained('braindao/flan-t5-cnn',from_transformers=True)
     tokenizer = AutoTokenizer.from_pretrained('braindao/flan-t5-cnn')
-    model = pipeline("summarization", onnx_model=model, tokenizer=tokenizer)
+    model = pipeline("summarization", model=onnx_model, tokenizer=tokenizer)
 
 # Inference is ran for every server call
 # Reference your preloaded global model variable here.
